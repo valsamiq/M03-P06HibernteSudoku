@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-mar-2018 9:45:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="sudoku" name="model.History" optimistic-lock="version" table="history">
+    <id name="idhistory" type="java.lang.Integer">
+      <column name="idhistory"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="model.Sudoku" fetch="select" name="sudoku">
+      <column name="idsudoku"/>
+    </many-to-one>
+    <many-to-one class="model.User" fetch="select" name="user">
+      <column length="30" name="username"/>
+    </many-to-one>
+    <property name="time" type="java.lang.Integer">
+      <column name="time"/>
+    </property>
+  </class>
+</hibernate-mapping>

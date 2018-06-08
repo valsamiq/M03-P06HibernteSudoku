@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-mar-2018 9:45:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="sudoku" name="model.Sudoku" optimistic-lock="version" table="sudoku">
+    <id name="idsudoku" type="java.lang.Integer">
+      <column name="idsudoku"/>
+      <generator class="identity"/>
+    </id>
+    <property name="level" type="java.lang.Integer">
+      <column name="level"/>
+    </property>
+    <property name="description" type="string">
+      <column length="30" name="description"/>
+    </property>
+    <property name="problem" type="string">
+      <column length="90" name="problem"/>
+    </property>
+    <property name="solution" type="string">
+      <column length="90" name="solution"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="histories" table="history">
+      <key>
+        <column name="idsudoku"/>
+      </key>
+      <one-to-many class="model.History"/>
+    </set>
+  </class>
+</hibernate-mapping>
